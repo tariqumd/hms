@@ -1,0 +1,53 @@
+{% extends "layouts.html" %}
+
+{% block content %}
+
+<h2>Patient Details</h2>
+<table class="table table-hover">
+
+ {% for data in p_li %}
+  <tr>
+    <th>Patient_id</th>
+    <td>{{data.patient_id}}</td>
+    </tr>
+    <tr>
+    <th>Patient_SSN</th>
+      <td>{{data.patient_ssn_id}}</td>
+    </tr>
+    <tr>
+    <th>patient Name</th>
+      <td>{{data.patient_name}}</td>
+    </tr>
+    <tr>
+    <th>Patient Age</th>
+      <td>{{data.patient_age}}</td>
+    </tr>
+    <tr>
+    <th>Date of Admission</th>
+      <td>{{data.doa}}</td>
+    </tr>
+    <tr>
+    <th>Bed Type</th>
+      <td>{{data.beds}}</td>
+    </tr>
+    <tr>
+    <th>Address</th>
+      <td>{{data.address}}</td>
+    </tr>
+    <tr>
+    <th>State</th>
+      <td>{{data.state}}</td>
+    </tr>
+    <tr>
+    <th>City</th>
+      <td>{{data.city}}</td>
+    </tr>
+    <tr>
+    <th>Status</th>
+      <td>{{data.status}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  <br><br><br><br>
+
+{% endblock %}

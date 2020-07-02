@@ -1,0 +1,42 @@
+{% extends "layouts.html" %}
+{% block content %}
+    <h1>
+        Welcome to login page
+        <br><br>
+    </h1>
+<body class="text-center">
+<div class="container" >
+    <div class="content-section">
+        <form class="form-signin" method="POST" action="">
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <div class="form-group">
+                    <!-- {{ form.id.label(class="form-control-label") }} -->
+                    {{ form.id(class="form-control-label form-control-lg", placeholder="Please Enter Your ID", minlength="8") }}
+
+                </div>
+                <div class="form-group">
+                    <!-- {{ form.password.label(class="form-control-label") }} -->
+                    {{ form.password(class="pwd", placeholder="Password",minlength="10") }}
+
+                </div>
+                <br>
+                <div class="form-group">
+
+                    {{ form.submit(class="btn-submit") }}
+
+                </div>
+            </fieldset>
+        </form>
+
+
+
+
+
+    </div>
+
+
+</div>
+</body>
+
+{% endblock content %}

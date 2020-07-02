@@ -1,0 +1,102 @@
+{% extends "layouts.html" %}
+{% block content %}
+<h2>Update Patient </h2>
+<form name="update" action="/patient_update1" method="post">
+
+   <div class="row">
+      <div class="col-25">
+         <label>Patient SSN ID:</label>
+      </div>
+      <div class="col-75">
+         <input type="hidden" name="patient_ssn_id" value= {{patient_update.patient_ssn_id}}>{{patient_update.patient_ssn_id}}<br>
+      </div>
+   </div>
+
+
+   <div class="row">
+      <div class="col-25">
+         <label>Patient Name:</label>
+      </div>
+      <div class="col-75">
+         <input name="patient_name" value= "{{patient_update.patient_name}}">
+         <br>
+      </div>
+   </div>
+
+
+   <div class="row">
+      <div class="col-25">
+         <label>Patient Age:</label>
+      </div>
+      <div classs="col-75">
+         <input  name="patient_age" value= "{{patient_update.patient_age}}">
+         <br>
+      </div>
+   </div>
+
+
+   <div class="row">
+      <div class="col-25">
+         <label>Date of Admisssion:</label>
+      </div>
+      <div class="col-75">
+         <input  name="doa" value= "{{patient_update.doa}}">
+         <br>
+      </div>
+  </div>
+
+  <div class="row">
+     <div class="col-25">
+         <label>Type of bed:</label>
+    </div>
+    <div class="col-75">
+         <input  name="beds" value="{{patient_update.beds}}">
+         <br>
+      </div>
+    </div>
+      <div class="row">
+        <div class="col-25">
+         <label>Address:</label>
+         </div>
+         <div class="col-75">
+         <input  name="address" value= "{{patient_update.address}}">
+         <br>
+      </div>
+      </div>
+
+
+      <div class="row">
+         <div class="col-25">
+           <label>State:</label>
+        </div>
+        <div class="col-75">
+         <input  name="state" value="{{patient_update.state}}">
+         <br>
+      </div>
+      </div>
+
+
+      <div class="row">
+         <div class="col-25">
+           <label>City:</label>
+        </div>
+        <div class="col-75">
+         <input  name="city" value="{{patient_update.city}}">
+      </div>
+      <br>
+      </div>
+
+      <div class="row">
+         <div class="col-25">
+         <label>Status:</label>
+         </div>
+         <div class="col-75">
+         <input  name="status" value="{{patient_update.status}}">
+         <br>
+      </div>
+      </div>
+      <input type="submit" name="update" value="Update" >
+</form>
+</div>
+<br><br><br>
+{% endblock %}

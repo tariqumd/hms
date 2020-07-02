@@ -1,0 +1,43 @@
+{% extends "layouts.html" %}
+{% block content %}
+
+<div class="align-text-top">
+    <h1>Active Patients</h1>
+
+  </div>
+
+<table class="table">
+    <thead>
+        <tr>
+          <th scope="col">Patient SSN id</th>
+          <th scope="col">Name </th>
+          <th scope="col">Age </th>
+          <th scope="col">adress</th>
+          <th scope="col">DOJ </th>
+          <th scope="col">Type of room</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% for patient in patients %}
+
+      <tr>
+        <th scope="row">{{ patient.patient_ssn_id }}</th>
+        <td>{{  patient.patient_name }}</td>
+        <td>{{ patient.patient_age }}</td>
+        <td>{{ patient.address}}</td>
+        <td>{{ patient.doa}}</td>
+        <td>{{ patient.beds}}</td>
+      </tr>
+
+
+      {% endfor %}
+
+      </tbody>
+
+
+
+</table>
+
+
+{% endblock content %}

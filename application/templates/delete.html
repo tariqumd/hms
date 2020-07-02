@@ -1,0 +1,26 @@
+{% extends "layouts.html" %}
+
+{% block content %}
+
+<h2>Delete Patient</h2>
+
+    <form name="delete" action="/patient_delete" method="post">
+        <div class="row">
+    <div class="col-25">
+        <label>Patient ID: *</label>
+    </div>
+        <div class="col-75">
+        <input type="text" name="patient_id" required>
+        </div>
+        </div>
+        <input type="submit" name="get" value="DELETE">
+
+
+
+    </form>
+
+
+
+  </body>
+</html>
+{% endblock %}

@@ -1,0 +1,222 @@
+Metadata-Version: 1.1
+Name: InvoiceGenerator
+Version: 1.1.0
+Summary: Library to generate PDF invoice.
+Home-page: https://github.com/creckx/InvoiceGenerator
+Author: Adam Strauch
+Author-email: cx@initd.cz
+License: BSD
+Description: ================
+        InvoiceGenerator
+        ================
+        .. image:: https://travis-ci.org/creckx/InvoiceGenerator.svg
+            :target: https://travis-ci.org/creckx/InvoiceGenerator
+        
+        This is library to generate a simple invoices.
+        Currently supported formats are PDF and XML for Pohoda accounting system.
+        PDF invoice is based on ReportLab.
+        
+        Installation
+        ============
+        
+        Run this command as root::
+        
+        	pip install InvoiceGenerator
+        
+        If you want upgrade to new version, add ``--upgrade`` flag::
+        
+        	pip install InvoiceGenerator --upgrade
+        
+        You can use setup.py from GitHub repository too::
+        
+        	python setup.py install
+        
+        
+        Documentation
+        -------------
+        
+        Complete documentation is available on
+        `Read The Docs <http://readthedocs.org/docs/InvoiceGenerator/>`_.
+        
+        
+        Example
+        =======
+        
+        Basic API
+        ---------
+        
+        Define invoice data first::
+        
+        	import os
+        
+        	from tempfile import NamedTemporaryFile
+        
+        	from InvoiceGenerator.api import Invoice, Item, Client, Provider, Creator
+        
+        	# choose english as language
+        	os.environ["INVOICE_LANG"] = "en"
+        
+        	client = Client('Client company')
+        	provider = Provider('My company', bank_account='2600420569', bank_code='2010')
+        	creator = Creator('John Doe')
+        
+        	invoice = Invoice(client, provider, creator)
+        	invoice.currency_locale = 'en_US.UTF-8'
+        	invoice.add_item(Item(32, 600, description="Item 1"))
+        	invoice.add_item(Item(60, 50, description="Item 2", tax=21))
+        	invoice.add_item(Item(50, 60, description="Item 3", tax=0))
+        	invoice.add_item(Item(5, 600, description="Item 4", tax=15))
+        
+        Note: Due to Python's representational error, write numbers as integer ``tax=10``,
+        Decimal ``tax=Decimal('10.1')`` or string ``tax='1.2'`` to avoid getting results with
+        lot of decimal places.
+        
+        PDF
+        ---
+        
+        Generate PDF invoice file::
+        
+        	from InvoiceGenerator.pdf import SimpleInvoice
+        
+        	pdf = SimpleInvoice(invoice)
+        	pdf.gen("invoice.pdf", generate_qr_code=True)
+        
+        
+        Pohoda XML
+        ----------
+        
+        Generate XML invoice file::
+        
+        	from InvoiceGenerator.pohoda import SimpleInvoice
+        
+        	pdf = SimpleInvoice(invoice)
+        	pdf.gen("invoice.xml")
+        
+        Note: Pohoda uses three tax rates: none: 0%, low: 15%, high: 21%.
+        If any item doesn't meet those percentage, the rateVat parameter will
+        not be set for those items resulting in 0% tax rate.
+        
+        Only SimpleInvoice is currently supported for Pohoda XML format.
+        
+        
+        Hacking
+        =======
+        
+        Fork the `repository on github <https://github.com/creckx/InvoiceGenerator>`_ and
+        write code. Make sure to add tests covering your code under `/tests/`. You can
+        run tests using::
+        
+            python setup.py test
+        
+        Then propose your patch via a pull request.
+        
+        Documentation is generated from `doc/source/` using `Sphinx
+        <http://sphinx-doc.org/>`_::
+        
+            python setup.py build_sphinx
+        
+        Then head to `doc/build/html/index.html`.
+        
+        
+        History
+        =======
+        
+        1.1.0 - 2020-04-24
+        ------------------
+        - Fix QR code on invoice
+        - Drop Python 2 support
+        - Add pt_BR translation
+        - Add support for transparent PNGs
+        
+        1.0.0 - 2018-05-17
+        ------------------
+        - Add support for Pohoda XML format
+        - Added much more complex documentation
+        - Parameter ``Address.zip`` was renamed to ``Address.zip_code``
+        - Add parameters ``division`` and ``country`` to the  ``Address``
+        - Added parameter ``Address.bank_code``
+          If present, the bank code will be written after dash to
+          the account number, otherwise whole
+          ``Address.bank_account`` will be used
+        - Address are rendered to fit the area on the PDF invoice
+        - Code style fixes
+        - Fixes for rounding: usage of ``decimal.Decimal`` and
+          added parameter ``Invoice.rounding_strategy``
+        - Fix for QR code
+        - Allow to set line width in ``SimpleInvoice``
+        
+        
+        0.5.4 - 2017-03-22
+        ------------------
+        - Fix locale in build package
+        
+        
+        0.5.3 - 2017-01-09
+        ------------------
+        - Use Babel for currency formating; fix and improve tests
+        
+        0.5.2 - 2014-12-04
+        ------------------
+        - Stop mentionning python2.6 support
+        - Make invoice.variable_symbol optional
+        
+        0.5.1 - 2014-10-28
+        ------------------
+        - Fix conf relative import
+        - Use python native function splitlines for notes
+        
+        0.5.0 - 2014-09-21
+        ------------------
+        - Add property number to object Invoice
+        - Replaced variable symbol for invoice number in invoice header
+        - Update Czech translations
+        
+        0.4.9 - 2014-07-3
+        -----------------
+        - Bug fix previous commit
+        
+        0.4.8 - 2014-07-3
+        -----------------
+        - Create proforma invoice
+        
+        0.4.7 - 2014-07-1
+        -----------------
+        - Change date format for qr code generator
+        - Disable converting datetime to string on Invoice
+        - Disable rendering empty values
+        
+        0.4.6 - 2014-05-14
+        ------------------
+        - The displayed number of pages only when there is more than one
+        - Rename Date to  Date of exposure
+        - Use pillow instead of PIL
+        
+        0.4.5 - 2014-04-21
+        ------------------
+        
+        - Support for multipage items printout
+        - Support for multiline item description
+        - Use locale to print currency strings and values
+        - Adding logo to provider header
+        
+        
+        No notes on earlier releases.
+        
+        
+        Contributors
+        ============
+        
+        - Adam Strauch (@creckx)
+        - Martin Voldrich (@rbas)
+        - Petr Dlouhy (@PetrDlouhy)
+        - Antoine Musso (@hashar)
+        
+        
+        
+Keywords: invoice invoices generator
+Platform: UNKNOWN
+Classifier: Development Status :: 3 - Alpha
+Classifier: Programming Language :: Python
+Classifier: Programming Language :: Python :: 3.5
+Classifier: Topic :: Utilities
+Classifier: License :: OSI Approved :: BSD License

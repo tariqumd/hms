@@ -1,0 +1,171 @@
+* {
+  box-sizing: border-box;
+}
+
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100%;
+    position: relative;
+    margin:0px;
+}
+
+
+header {
+    text-align: center;
+}
+
+li {
+    display: inline;
+    padding: 5px;
+}
+
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+a:hover { color : red;}
+
+hr {
+    width: 100%;
+    height:4px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: darkblue;
+    border: 0 none;
+}
+input[type=text],input[type=password],input[type=number], select, textarea,.pwd,.dropdown {
+  width: 50%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit],input[type=reset] {
+  background-color: cornflowerblue;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: center;
+}
+
+input[type=submit]:hover {
+  background-color: grey;
+}
+
+.top-container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+.bottom-container {
+    background: #f2f2f2;
+    padding:5px;
+    border-top:2px solid #0f0f0f;
+    position: fixed;
+    bottom:0;
+}
+
+.container-term {
+    width:80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    height: 100%;
+    margin-top: 0;
+  }
+}
+.btn-add {
+    background-color: cornflowerblue;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    opacity: 0.9;
+}
+
+.btn-submit {
+    background-color: cornflowerblue;
+    color: white;
+    padding: 16px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 30%;
+    opacity: 0.9;
+}
+.btn-submit:hover {
+    opacity: 1;
+}
+
+.error-message{
+      color : red;
+}
+
+.user{
+
+  float: right;
+  position: absolute;
+  font-size: 25px;
+  right: 10em;
+  top: 2em;
+}
+
+.label{
+
+  font-size: 20px;
+}
+
+.back{
+  background-color: cornflowerblue;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: auto;
+  opacity: 0.9;
+  float: right;
+
+}

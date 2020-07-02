@@ -1,0 +1,95 @@
+{% extends "layouts.html" %}
+{% block content %}
+<h2>Patient Registration</h2>
+<br>
+<form name="register" action="/add_patient" method="post">
+   <div class="row">
+      <div class="col-25">
+         <label>Patient SSN ID: </label>
+      </div>
+      <div class="col-75">
+         <input type="text" name="patient_ssn_id" min="9" max="9" required>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-25">
+         <label>Patient Name: </label>
+      </div>
+      <div class="col-75">
+         <input type="text" name="patient_name" required>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-25">
+         <label>Patient Age: </label>
+      </div>
+      <div class="col-75">
+         <input type="number" name="patient_age" min="0" required>
+      </div>
+   </div>
+   <!--<label>Date Of Admission *</label>
+      <input type="text" name="doa" required>
+      <br><br>-->
+   <div class="row">
+      <div class="col-25">
+         <label>Type of bed:</label>
+      </div>
+      <div class="col-75">
+         <select name="beds" id="beds" class="dropdown">
+            <option value="select">Select</option>
+            <option value="general ward">General ward</option>
+            <option value="semi sharing">Semi Sharing</option>
+            <option value="single room">Single Room</option>
+         </select>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-25">
+         <label>Address:</label>
+      </div>
+      <div class="col-75">
+         <textarea id="address" name="address" rows="4" cols="50"></textarea>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-25">
+         <label>State:</label>
+      </div>
+      <div class="col-75">
+        <p><select onchange="print_city('state', this.selectedIndex);" id="sts" name ="stt" class="dropdown" required></select></p>
+
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-25">
+         <label>City:</label>
+      </div>
+      <div class="col-75">
+        <p><select id ="state" class="dropdown" name="city" required></select></p>
+
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-25">
+         <label><b> *Mandatory</b></label>
+      </div>
+
+      <div class="col-30">
+        <br><br><br>
+         <input type="submit" name="Submit" value="Submit" >
+      </div>
+      &nbsp &nbsp &nbsp
+      <div class="col-45">
+        <br><br><br>
+         <input type="reset" name="Reset" value="Reset">
+      </div>
+   </div>
+   <br><br>
+   <br><br>
+   <br><br>
+   <br><br>
+   <br>
+   <br><br><br>
+</form>
+{% endblock %}
+</html>

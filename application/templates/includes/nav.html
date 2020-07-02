@@ -1,0 +1,29 @@
+    <header>
+        <nav>
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a href="{{ url_for('index') }}" class="nav-link {% if index %}active{% endif %}">Home</a></li>
+
+                {% if current_user.designation == "Desk_executive" %}
+                <li class="nav-item"><a href="{{ url_for('register') }}" class="nav-link {% if register %}active{% endif %}">Register patient</a></li>
+                <li class="nav-item"><a href="{{ url_for('update') }}" class="nav-link {% if update %}active{% endif %}">Update patient</a></li>
+                <li class="nav-item"><a href="{{ url_for('delete') }}" class="nav-link {% if delete %}active{% endif %}">Delete patient</a></li>
+                <li class="nav-item"><a href="{{ url_for('billing') }}" class="nav-link {% if billing %}active{% endif %}">Billing</a></li>
+                <li class="nav-item"><a href="{{ url_for('viewing') }}" class="nav-link {% if viewing %}active{% endif %}">View</a></li>
+                <li class="nav-item"><a href="{{ url_for('active') }}" class="nav-link {% if active %}active{% endif %}">Active</a></li>
+
+                {% endif %}
+                {% if current_user.designation == "pharmacist" %}
+                <li class="nav-item"><a href="{{ url_for('pharamcy')}}" class="nav-link {% if pharamcy or medicine %}active{% endif %}">Pharmacy</a></li>
+                {% endif %}
+                {% if current_user.designation == "diagnostic" %}
+                <li class="nav-item"><a href="{{ url_for('retrieve') }}" class="nav-link {% if retrieve %}active{% endif %} ">Diagnosis</a></li>
+                {% endif %}
+                {% if current_user.is_authenticated %}
+                <li class="nav-item"><a href="{{ url_for('logout') }}" class="nav-link {% if logout %}active{% endif %} ">Logout</a></li>
+                {% else %}
+                <li class="nav-item"><a href="{{ url_for('login') }}" class="nav-link {% if login %}active{% endif %}">Login</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <hr style="clear:both">
+    </header>

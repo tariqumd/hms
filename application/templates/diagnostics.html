@@ -1,0 +1,23 @@
+{% extends "layouts.html" %}
+
+{% block content %}
+<a href="\tests"><button class="back">Back </button></a>
+
+<h1>Diagnosis Masterfile</h1>
+<table class="table table-hover">
+<tr>
+    <th>Diagnosis Name</th>
+    <th>Price(Rs.)</th>
+</tr>
+ {% for data in diagnosis %}
+  <tr>
+    <td>{{data.dia_name}}</td>
+        <td>{{data.price}}</td>
+    </tr>
+    {% endfor %}
+  </table>
+
+
+  </body>
+</html>
+{% endblock %}

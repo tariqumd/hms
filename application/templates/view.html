@@ -1,0 +1,30 @@
+{% extends "layouts.html" %}
+
+{% block content %}
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1> View Patient </h1>
+
+  </div>
+            <br>
+         <form name="retrival" action="\newview" method="post" novalidate>
+              <fieldset class="form-group">
+
+                <p>
+                    {{ form.patient_id.label(class="label") }}<br>
+                    {{ form.patient_id(size=50) }}
+                    {% for error in form.patient_id.errors %}
+                      <span class="error-message">{{ error }}</span>
+                    {% endfor %}
+                </p>
+                <p>
+                    {{  form.submit(class="btn-submit") }}
+                </p>
+                </fieldset>
+            </form>
+
+</div>
+
+
+{% endblock %}

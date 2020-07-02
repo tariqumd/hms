@@ -1,0 +1,27 @@
+{% extends "layouts.html" %}
+
+{% block content %}
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1> Diagnostics</h1>
+
+  </div>
+            <br>
+         <form name="retrival" action="\tests" method="post" novalidate>
+              <fieldset class="form-group">
+
+                <p>
+                    {{ form.patient_id.label(class="label") }}<br>
+                    {{ form.patient_id(size=35) }}
+
+                </p>
+                <p>
+                    {{  form.submit(class="btn-submit") }}
+                </p>
+                </fieldset>
+            </form>
+
+</div>
+
+{% endblock %}

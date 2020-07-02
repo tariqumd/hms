@@ -1,0 +1,27 @@
+{% extends "layouts.html" %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+
+            <h2> Welcome to ABC hospital </h2>
+            <br><br>
+            <h3>
+                {% if current_user.is_authenticated %}
+                Id: {{ current_user.id }} <br><br>
+                Designation: {{ current_user.designation }}
+                {% else %}
+                <h3>Login to continue:</h3>
+                <br>
+                <li> As a Desk Executive </li><br>
+                <li> As a Pharmacist </li><br>
+                <li> As a Diagnostic </li><br>
+
+                {% endif %}
+            </h3>
+</div>
+
+    </div>
+
+{% endblock %}

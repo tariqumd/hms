@@ -1,0 +1,26 @@
+{% extends "layouts.html" %}
+
+{% block content %}
+
+<h2>Update Patient</h2>
+
+    <form name="update" action="/patient_update" method="post">
+        <div class="row">
+    <div class="col-25">
+        <label>Patient ID: *</label>
+    </div>
+        <div class="col-75">
+        <input type="text" name="patient_id" required>
+        </div>
+            <div class="col-75">
+        <input type="submit" name="get" value="GET">
+        </div>
+        </div>
+
+    </form>
+
+
+
+  </body>
+</html>
+{% endblock %}

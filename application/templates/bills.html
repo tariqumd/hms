@@ -1,0 +1,130 @@
+{% extends "layouts.html" %}
+
+{% block content %}
+
+<div class="row">
+<div class="col-md-12 text-center">
+<h2>Details for Patient ID :{{p_id}}</h2><br><br>
+</div>
+
+<div class="col-md-12 text-center">
+<table class="table table-hover">
+<thead>
+<tr>
+    <th scope="col">Patient ID</th>
+    <th scope="col">Patient Name</th>
+    <th scope="col">Age</th>
+    <th scope="col">DOJ</th>
+    <th scope="col">Bed Type</th>
+    <th scope="col">City</th>
+
+</tr>
+</thead>
+<tbody>
+  {% for data in patientdets %}
+    <tr>
+        <td scope='row'>{{ data["patient_id"] }}</td>
+        <td>{{ data["patient_name"] }}</td>
+        <td>{{ data["patient_age"] }}</td>
+        <td>{{ data["doa"] }}</td>
+        <td>{{ data["beds"] }}</td>
+        <td>{{ data["city"] }}</td>
+
+    </tr>
+   {% endfor %}
+</tbody>
+</table>
+<br><br><br>
+</div>
+
+<div class="col-md-12 text-right">
+    <h4>  Total No. of Days: {{d}} &nbsp;  Total bed costs : {{bedtot}}</h4>
+</div>
+<br>
+<br>
+<div class="col-md-12 text-center">
+<h2> Medicine Issued </h2>
+<table class="table table-hover">
+<thead>
+    <tr>
+        <th scope="col">Medicine Name</th>
+        <th scope="col">Quantiy Issued</th>
+        <th scope="col">Medicine Rate</th>
+        <th scope="col">Total</th>
+
+
+    </tr>
+</thead>
+<tbody>
+
+    {% for row in iss_med  %}
+    {% for data in row  %}
+     <tr>
+        <td scope='row'>{{ data["medicine_name"] }}</td>
+        <td>{{ data["quantity_issued"] }}</td>
+        <td>{{ data["medicine_rate"] }}</td>
+        <td>{{ data["quantity_issued"] * data["medicine_rate"] }}</td>
+        {% endfor %}
+        {% endfor %}
+
+    </tr>
+</tbody>
+</table>
+</div>
+<div class="col-md-12 text-right">
+    <h4>  Total Medicine costs : {{totmed}}</h4>
+</div>
+<br>
+<br>
+<div class="col-md-12 text-center">
+<h2> Diagnosis</h2>
+<table class="table table-hover">
+<thead>
+    <tr>
+        <th scope="col">Diagnosis ID </th>
+        <th scope="col">Diagnosis Name</th>
+        <th scope="col">price</th>
+
+    </tr>
+</thead>
+<tbody>
+    {% for row in dia_mas %}
+    {% for data in row %}
+    <tr>
+        <td scope='row'>{{ data["diagnosis_id"] }}</td>
+        <td>{{ data["diagnosis_name"] }}</td>
+        <td>{{ data["price"] }}</td>
+
+    </tr>
+    {% endfor %}
+    {% endfor %}
+</tbody>
+</table>
+</div>
+<div class="col-md-12 text-right">
+    <h4>  Total Diagnosis costs : {{totdia}}</h4>
+</div>
+<br>
+<div class="col-md-12 text-center">
+    <h2>  Total : {{total}}</h2>
+</div>
+<div class="col-md-12 text-right">
+  <form action="{{ url_for('invoice')}}" method="POST">
+{% for data in patientdets %}
+  <input type="hidden" name="patient" value="{{ data['patient_name'] }}">
+  <input type="hidden" name="id" value="{{ data['patient_id'] }}">
+  {% endfor %}
+    <input type="hidden" name="Days" value="{{ d }}">
+  <input type="hidden" name="bedcost" value="{{ b }}">
+  <input type="hidden" name="medcost" value="{{ totmed }}">
+  <input type="hidden" name="diacost" value="{{ totdia }}">
+  <input type="hidden" name="total" value="{{ total }}">
+  <button type="submit" class="back">Generate Bill</button>
+  </form>
+</div>
+<hr>
+<br><br><br>
+
+</div>
+
+{% endblock %}
