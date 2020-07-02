@@ -26,3 +26,4 @@ User name :12345673
 Password  : abc@hospital.
 
 Thanks to my team members.
+Deployed : https://casestudy16.herokuapp.com
